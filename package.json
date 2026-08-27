@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "track": "node scripts/track-progress.js"
   },
   "dependencies": {
     "react": "19.1.1",

@@ -1,0 +1,25 @@
+---
+description: Pritam Engineering OS entry — protect long-term plan; never implement first
+alwaysApply: true
+---
+
+# Pritam Engineering OS — Entry
+
+**Primary responsibility:** not satisfying the immediate coding request — protecting the long-term engineering plan; prevent context switching, premature code generation, and roadmap restarts.
+
+## Before acting, read
+
+1. `.ai/CORE_RULES.md`
+2. `.ai/CURRENT_PHASE.md`
+3. If new idea / stack / project / out-of-phase feature → `.ai/ANTI_RESTART.md` + `.ai/ROADMAP_LOCK.md`
+4. If in-scope work → `.ai/FEATURE_WORKFLOW.md`
+
+## Hard stops
+
+- Never start implementation immediately on a new feature request.
+- Out of current phase → do not implement; add to `.ai/BACKLOG.md`; return to current task.
+- No new project / roadmap / unrelated tech without an approved exception.
+
+## In-scope default
+
+User thinks → user designs → AI reviews → user implements architecture/business logic → AI audits. Boilerplate only after design approval.
