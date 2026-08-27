@@ -131,16 +131,16 @@ ayurvedic_super/
   │   ├── gradlew
   │   ├── gradlew.bat
   │   └── settings.gradle
-  ├── approaches/
-  │   ├── 01-clean-architecture-and-ddd.md
-  │   ├── 02-offline-first-and-persistence.md
-  │   ├── 03-large-scale-virtualization.md
-  │   ├── 04-network-resilience-and-fault-injection.md
-  │   ├── 05-state-management-and-data-flow.md
-  │   ├── 06-design-system-and-theming.md
-  │   ├── 07-testing-strategy.md
-  │   └── README.md
   ├── docs/
+  │   ├── approaches/
+  │   │   ├── 01-clean-architecture-and-ddd.md
+  │   │   ├── 02-offline-first-and-persistence.md
+  │   │   ├── 03-large-scale-virtualization.md
+  │   │   ├── 04-network-resilience-and-fault-injection.md
+  │   │   ├── 05-state-management-and-data-flow.md
+  │   │   ├── 06-design-system-and-theming.md
+  │   │   ├── 07-testing-strategy.md
+  │   │   └── README.md
   │   ├── Amrutam_Architecture_and_Build_Plan.md
   │   └── Amrutam_React_Native_Assignment.md
   ├── ios/
@@ -178,12 +178,26 @@ ayurvedic_super/
   │   │   ├── application/
   │   │   │   ├── consultation/
   │   │   │   │   ├── BookSlotUseCase.ts
-  │   │   │   │   └── GetDoctorsUseCase.ts
+  │   │   │   │   ├── CancelBookingUseCase.ts
+  │   │   │   │   ├── GetDoctorSlotsUseCase.ts
+  │   │   │   │   ├── GetDoctorsUseCase.ts
+  │   │   │   │   └── GetUserBookingsUseCase.ts
   │   │   │   ├── healthRecords/
-  │   │   │   │   └── GetHealthTimelineUseCase.ts
+  │   │   │   │   ├── AddHealthRecordUseCase.ts
+  │   │   │   │   ├── DeleteHealthRecordUseCase.ts
+  │   │   │   │   ├── GetHealthTimelineUseCase.ts
+  │   │   │   │   ├── GetRecordDetailsUseCase.ts
+  │   │   │   │   └── GetRecordTagsUseCase.ts
   │   │   │   └── shop/
   │   │   │       ├── AddToCartUseCase.ts
-  │   │   │       └── GetProductsUseCase.ts
+  │   │   │       ├── CheckoutUseCase.ts
+  │   │   │       ├── GetCartUseCase.ts
+  │   │   │       ├── GetProductDetailsUseCase.ts
+  │   │   │       ├── GetProductsUseCase.ts
+  │   │   │       ├── GetWishlistUseCase.ts
+  │   │   │       ├── RemoveFromCartUseCase.ts
+  │   │   │       ├── ToggleWishlistUseCase.ts
+  │   │   │       └── UpdateCartQuantityUseCase.ts
   │   │   ├── domain/
   │   │   │   ├── consultation/
   │   │   │   │   ├── Booking.ts
