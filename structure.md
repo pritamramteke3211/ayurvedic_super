@@ -1,6 +1,6 @@
 # Project Directory Structure: Ayurvedic Super App
 
-This document provides the complete, official directory layout and architecture map for all AI agents and developers working on the `ayurvedic_super` project.
+This document provides the complete, official directory layout and architecture map for the `ayurvedic_super` project.
 
 ---
 
@@ -17,75 +17,6 @@ This document provides the complete, official directory layout and architecture 
 ayurvedic_super/
   ├── __tests__/
   │   └── App.test.tsx
-  ├── .agents/
-  │   ├── rules/
-  │   │   ├── anti-restart.md
-  │   │   ├── architecture.md
-  │   │   ├── code-comment-gate.md
-  │   │   └── verification-gates.md
-  │   └── skills/
-  │       ├── clean-architecture-rn/
-  │       │   └── SKILL.md
-  │       ├── code-comment-gate/
-  │       │   └── SKILL.md
-  │       ├── interview-coding-practice/
-  │       │   ├── SKILL.md
-  │       │   └── workflow.md
-  │       ├── pritam-engineering-os/
-  │       │   ├── reference.md
-  │       │   └── SKILL.md
-  │       └── SKILL.md
-  ├── .ai/
-  │   ├── rules/
-  │   │   ├── anti-restart.mdc
-  │   │   ├── code-comment-gate.mdc
-  │   │   ├── engineering-loop.mdc
-  │   │   ├── interview-coding-practice.mdc
-  │   │   ├── mentor-protocol.mdc
-  │   │   └── verification-gates.mdc
-  │   ├── skills/
-  │   │   ├── code-comment-gate/
-  │   │   │   └── SKILL.md
-  │   │   ├── interview-coding-practice/
-  │   │   │   ├── SKILL.md
-  │   │   │   └── workflow.md
-  │   │   └── pritam-engineering-os/
-  │   │       ├── reference.md
-  │   │       └── SKILL.md
-  │   ├── AI_BEHAVIOR.md
-  │   ├── ANTI_RESTART.md
-  │   ├── ARCHITECTURE_RULES.md
-  │   ├── BACKLOG.md
-  │   ├── CODING_RULES.md
-  │   ├── CORE_RULES.md
-  │   ├── CURRENT_PHASE.md
-  │   ├── DEADLINE.md
-  │   ├── DECISION_LOG.md
-  │   ├── FEATURE_WORKFLOW.md
-  │   ├── LEARNING_PROTOCOL.md
-  │   ├── PROGRESS.md
-  │   ├── REVIEW_PROTOCOL.md
-  │   ├── ROADMAP_LOCK.md
-  │   └── ROADMAP.md
-  ├── .claude/
-  │   └── settings.local.json
-  ├── .cursor/
-  │   ├── rules/
-  │   │   ├── anti-restart.mdc
-  │   │   ├── code-comment-gate.mdc
-  │   │   ├── engineering-loop.mdc
-  │   │   ├── interview-coding-practice.mdc
-  │   │   ├── mentor-protocol.mdc
-  │   │   └── verification-gates.mdc
-  │   └── skills/
-  │       ├── code-comment-gate/
-  │       │   └── SKILL.md
-  │       ├── interview-coding-practice/
-  │       │   ├── SKILL.md
-  │       │   └── workflow.md
-  │       └── pritam-engineering-os/
-  │           ├── reference.md
-  │           └── SKILL.md
   ├── android/
   │   ├── .kotlin/
   │   │   └── sessions/
@@ -240,7 +171,6 @@ ayurvedic_super/
   ├── .gitignore
   ├── .prettierrc.js
   ├── .watchmanconfig
-  ├── AGENTS.md
   ├── app.json
   ├── App.tsx
   ├── babel.config.js

@@ -8,7 +8,6 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "track": "node scripts/track-progress.js",
     "postinstall": "node scripts/patch-codegen.js"
   },
   "dependencies": {
