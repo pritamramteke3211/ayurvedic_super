@@ -1,5 +1,10 @@
 # 🌿 Amrutam Ayurvedic Super App
 
+> [!IMPORTANT]
+> **Technical Evaluation Assignment Notice**
+> This codebase was created and authored by **Pritam Ramteke** specifically for technical evaluation and recruitment review. 
+> All rights are reserved. This project is licensed strictly under an **Evaluation-Only License** ([LICENSE](file:///d:/RNProjects/ayurvedic_super/LICENSE)). Any unauthorized commercial usage, copying, or redistribution is prohibited.
+
 > **Production-Ready, High-Performance React Native Super App** built with **Clean Architecture**, **Domain-Driven Design (DDD)**, and **Offline-First Resilience**.
 
 ---
