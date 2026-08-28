@@ -1,3 +1,14 @@
+/**
+ * @file src/core/domain/shop/Product.ts
+ * @description Pure domain entity representing an Ayurvedic herbal product or remedy.
+ *
+ * Invariants:
+ * - Immutable core properties (id, name, category, ingredients, benefits).
+ * - Effective price dynamically reflects discount price when valid.
+ * - In-stock status strictly requires inStock flag === true AND stockCount > 0.
+ * - Zero external framework or React Native dependencies.
+ */
+
 export interface ProductProps {
   id: string;
   name: string;
@@ -60,7 +71,9 @@ export class Product {
   get benefits(): string[] { return [...this._benefits]; }
 
   get effectivePrice(): number {
-    return this._discountPrice ?? this._price;
+    return this._discountPrice !== undefined && this._discountPrice < this._price
+      ? this._discountPrice
+      : this._price;
   }
 
   toJSON(): Readonly<ProductProps> {
