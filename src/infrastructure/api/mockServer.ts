@@ -1,13 +1,15 @@
 /**
  * @file src/infrastructure/api/mockServer.ts
- * @description Chaos fault injection simulator for offline testing, UI resilience,
- * and reliable 4 UI state verification (Loading, Empty, Error, Data).
+ * @description Mock API Server & Chaos Fault Simulator utilizing axios-mock-adapter.
  *
  * Invariants:
- * - When enabled, injects configurable artificial latency and simulates deterministic/stochastic errors.
- * - Disabling the simulator immediately reverts to normal simulated latency (100–300ms) with zero forced failures.
+ * - Employs axios-mock-adapter to intercept HTTP requests with deterministic mock responses.
+ * - Supports injecting artificial latency, 500 internal errors, 401 unauthenticated, and network drops.
+ * - Allows seamless runtime switching between normal mock responses and chaos simulation.
  */
 
+import axios, { AxiosInstance } from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 import { ApiError, NetworkError, SessionExpiredError, TimeoutError } from './errors';
 
 export type ChaosFaultType = 'none' | 'network' | 'timeout' | 'server_500' | 'session_expired';
@@ -29,11 +31,22 @@ export class ChaosFaultSimulator {
     forcedFaultType: 'none',
   };
 
+  private mockAdapter: MockAdapter | null = null;
+  private axiosInstance: AxiosInstance;
+
+  constructor(customAxiosInstance?: AxiosInstance) {
+    this.axiosInstance = customAxiosInstance || axios.create();
+    this.mockAdapter = new MockAdapter(this.axiosInstance, { delayResponse: 200 });
+  }
+
   /**
    * Configures simulator parameters.
    */
   configure(config: Partial<ChaosConfig>): void {
     this.config = { ...this.config, ...config };
+    if (config.minLatencyMs !== undefined) {
+      this.mockAdapter = new MockAdapter(this.axiosInstance, { delayResponse: config.minLatencyMs });
+    }
   }
 
   /**
@@ -41,6 +54,13 @@ export class ChaosFaultSimulator {
    */
   getConfig(): Readonly<ChaosConfig> {
     return Object.freeze({ ...this.config });
+  }
+
+  /**
+   * Returns the underlying axios-mock-adapter instance for custom route mocking.
+   */
+  getMockAdapter(): MockAdapter | null {
+    return this.mockAdapter;
   }
 
   /**
