@@ -32,3 +32,11 @@ export class DoctorNotFoundError extends ConsultationDomainError {
     this.name = 'DoctorNotFoundError';
   }
 }
+
+export class BookingNotFoundError extends ConsultationDomainError {
+  constructor(id: string) {
+    super(`Booking with ID ${id} was not found.`);
+    this.name = 'BookingNotFoundError';
+  }
+}
+

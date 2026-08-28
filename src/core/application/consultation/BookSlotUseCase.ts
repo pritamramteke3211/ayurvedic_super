@@ -8,6 +8,7 @@ export interface BookSlotDTO {
   doctorId: string;
   slotId: string;
   patientName: string;
+  date?: string;
 }
 
 export class BookSlotUseCase {
@@ -19,8 +20,8 @@ export class BookSlotUseCase {
       throw new DoctorNotFoundError(dto.doctorId);
     }
 
-    const todayDate = new Date().toISOString().split('T')[0];
-    const slots = await this.repository.getDoctorSlots(dto.doctorId, todayDate);
+    const bookingDate = dto.date || new Date().toISOString().split('T')[0];
+    const slots = await this.repository.getDoctorSlots(dto.doctorId, bookingDate);
     const slot = slots.find(s => s.id === dto.slotId);
 
     if (!slot) {
