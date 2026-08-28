@@ -1,7 +1,12 @@
 import { storage } from './mmkv';
 import { logger } from '../logging/logger';
 
-export type SyncActionType = 'CREATE_BOOKING' | 'CANCEL_BOOKING' | 'SYNC_CART';
+export type SyncActionType =
+  | 'CREATE_BOOKING'
+  | 'CANCEL_BOOKING'
+  | 'SYNC_CART'
+  | 'CREATE_HEALTH_RECORD'
+  | 'DELETE_HEALTH_RECORD';
 
 export interface SyncAction<T = unknown> {
   id: string;
