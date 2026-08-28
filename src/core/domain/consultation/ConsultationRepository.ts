@@ -8,7 +8,9 @@ export interface DoctorFilterCriteria {
   specialty?: string;
   minRating?: number;
   maxFee?: number;
+  minExperience?: number;
   availableToday?: boolean;
+  sortBy?: 'rating_desc' | 'experience_desc' | 'fee_asc' | 'fee_desc';
 }
 
 export interface ConsultationRepository {

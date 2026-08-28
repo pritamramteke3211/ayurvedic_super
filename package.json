@@ -8,13 +8,28 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "track": "node scripts/track-progress.js"
+    "track": "node scripts/track-progress.js",
+    "postinstall": "node scripts/patch-codegen.js"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "^12.0.1",
+    "@react-native-masked-view/masked-view": "^0.3.2",
+    "@react-native/new-app-screen": "0.82.1",
+    "@react-navigation/bottom-tabs": "^7.18.18",
+    "@react-navigation/native": "^7.3.18",
+    "@react-navigation/stack": "^7.10.24",
+    "@reduxjs/toolkit": "^2.12.0",
+    "@shopify/flash-list": "^2.3.2",
+    "axios": "^1.20.0",
     "react": "19.1.1",
     "react-native": "0.82.1",
-    "@react-native/new-app-screen": "0.82.1",
-    "react-native-safe-area-context": "^5.5.2"
+    "react-native-gesture-handler": "^3.2.1",
+    "react-native-mmkv": "^4.3.2",
+    "react-native-nitro-modules": "^0.37.1",
+    "react-native-safe-area-context": "^5.9.1",
+    "react-native-screens": "^4.27.0",
+    "react-native-svg": "^15.15.5",
+    "react-redux": "^9.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
