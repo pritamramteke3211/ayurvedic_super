@@ -1,5 +1,14 @@
+/**
+ * @file src/core/domain/shop/CartCalculator.ts
+ * @description Pure calculation engine for shopping cart subtotals, item discounts, shipping thresholds, and totals.
+ *
+ * Invariants:
+ * - Free shipping applies automatically when subtotal > ₹500 or cart is empty (₹0), otherwise ₹50.
+ * - Total equals max(0, subtotal - discount + deliveryFee).
+ * - Zero external framework dependencies; fully unit-tested domain service.
+ */
+
 import { CartItem } from './CartItem';
-import { Product } from './Product';
 
 export interface CartSummary {
   subtotal: number;

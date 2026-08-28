@@ -17,6 +17,12 @@ export type ConsultationStackParamList = {
   MyBookings: undefined;
 };
 
+export type ShopStackParamList = {
+  ProductList: undefined;
+  ProductDetails: { productId: string };
+  Cart: undefined;
+};
+
 export type RootStackParamList = {
   MainTabs: undefined;
   ConsultationStack: undefined;
@@ -24,6 +30,7 @@ export type RootStackParamList = {
   BookingSlot: { doctorId: string };
   BookingConfirmation: { bookingId: string };
   MyBookings: undefined;
+  ShopStack: undefined;
   ProductList: undefined;
   ProductDetails: { productId: string };
   Cart: undefined;
@@ -45,3 +52,8 @@ export type DoctorListScreenProps = StackScreenProps<ConsultationStackParamList,
 export type DoctorDetailScreenProps = StackScreenProps<ConsultationStackParamList, 'DoctorDetails'>;
 export type BookingScreenProps = StackScreenProps<ConsultationStackParamList, 'BookingSlot'>;
 export type MyBookingsScreenProps = StackScreenProps<ConsultationStackParamList, 'MyBookings'>;
+
+export type ProductListScreenProps = StackScreenProps<ShopStackParamList, 'ProductList'>;
+export type ProductDetailScreenProps = StackScreenProps<ShopStackParamList, 'ProductDetails'>;
+export type CartScreenProps = StackScreenProps<ShopStackParamList, 'Cart'>;
+

@@ -1,3 +1,12 @@
+/**
+ * @file src/core/domain/shop/ShopRepository.ts
+ * @description Contract interface for Shop data access, cart persistence, and wishlist syncing.
+ *
+ * Invariants:
+ * - Decouples domain and application layers from concrete data sources and persistence mechanisms.
+ * - Supports pagination, complex multi-filtering, sorting, and offline storage operations.
+ */
+
 import { Product } from './Product';
 import { CartItem } from './CartItem';
 import { PaginatedResult, PaginationParams } from '../../types/common';

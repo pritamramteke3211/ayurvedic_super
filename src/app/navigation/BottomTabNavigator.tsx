@@ -11,7 +11,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ConsultationNavigator } from './ConsultationNavigator';
-import { ShopHomeScreen } from '../../modules/shop/presentation/screens/ShopHomeScreen';
+import { ShopNavigator } from './ShopNavigator';
 import { HealthRecordsHomeScreen } from '../../modules/healthRecords/presentation/screens/HealthRecordsHomeScreen';
 import { useAppTheme } from '../theme/useAppTheme';
 import {
@@ -63,7 +63,7 @@ export const BottomTabNavigator: React.FC = () => {
       />
       <Tab.Screen
         name="Shop"
-        component={ShopHomeScreen}
+        component={ShopNavigator}
         options={{
           tabBarLabel: 'Shop',
           tabBarIcon: ({ color, size }) => (

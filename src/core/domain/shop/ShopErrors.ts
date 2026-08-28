@@ -1,3 +1,12 @@
+/**
+ * @file src/core/domain/shop/ShopErrors.ts
+ * @description Typed error hierarchy for domain and business rule violations in the Shop module.
+ *
+ * Invariants:
+ * - Extends base Error with descriptive error name and message.
+ * - Captures out-of-stock, item not found, invalid quantity, and checkout boundary failures.
+ */
+
 export class ShopDomainError extends Error {
   constructor(message: string) {
     super(message);

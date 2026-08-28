@@ -1,3 +1,12 @@
+/**
+ * @file src/core/application/shop/CheckoutUseCase.ts
+ * @description Application use case to execute checkout, generate order confirmation, and clear the cart.
+ *
+ * Invariants:
+ * - Rejects checkout attempts on empty carts.
+ * - Atomically generates a unique Order ID and purges the active cart from storage.
+ */
+
 import { ShopRepository } from '../../domain/shop/ShopRepository';
 import { CartCalculator, CartSummary } from '../../domain/shop/CartCalculator';
 import { ShopDomainError } from '../../domain/shop/ShopErrors';
@@ -19,10 +28,9 @@ export class CheckoutUseCase {
     }
 
     const summary = CartCalculator.calculateSummary(cartItems);
-
     const orderId = `ORD_${Date.now()}_${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
 
-    // Clear cart on successful order
+    // Clear cart on successful order placement
     await this.repository.saveCart([]);
 
     return {

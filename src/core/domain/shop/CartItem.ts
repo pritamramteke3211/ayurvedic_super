@@ -1,3 +1,14 @@
+/**
+ * @file src/core/domain/shop/CartItem.ts
+ * @description Pure domain entity representing an item entry within the user's shopping cart.
+ *
+ * Invariants:
+ * - Quantity must always be a positive integer (>= 1).
+ * - Item total equals effective price multiplied by quantity.
+ * - Enforces stock count constraints where applicable.
+ * - Zero external UI/framework dependencies.
+ */
+
 import { Product } from './Product';
 import { InvalidQuantityError } from './ShopErrors';
 
