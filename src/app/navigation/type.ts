@@ -23,6 +23,12 @@ export type ShopStackParamList = {
   Cart: undefined;
 };
 
+export type HealthRecordsStackParamList = {
+  HealthTimeline: undefined;
+  RecordDetails: { recordId: string };
+  AddRecord: undefined;
+};
+
 export type RootStackParamList = {
   MainTabs: undefined;
   ConsultationStack: undefined;
@@ -56,4 +62,8 @@ export type MyBookingsScreenProps = StackScreenProps<ConsultationStackParamList,
 export type ProductListScreenProps = StackScreenProps<ShopStackParamList, 'ProductList'>;
 export type ProductDetailScreenProps = StackScreenProps<ShopStackParamList, 'ProductDetails'>;
 export type CartScreenProps = StackScreenProps<ShopStackParamList, 'Cart'>;
+
+export type HealthTimelineScreenProps = StackScreenProps<HealthRecordsStackParamList, 'HealthTimeline'>;
+export type RecordDetailScreenProps = StackScreenProps<HealthRecordsStackParamList, 'RecordDetails'>;
+export type AddRecordScreenProps = StackScreenProps<HealthRecordsStackParamList, 'AddRecord'>;
 

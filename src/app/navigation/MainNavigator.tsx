@@ -11,6 +11,7 @@ import React from 'react';
 import { NavigationContainer, Theme } from '@react-navigation/native';
 import { BottomTabNavigator } from './BottomTabNavigator';
 import { useAppTheme } from '../theme/useAppTheme';
+import { linking } from './linking';
 
 export const MainNavigator: React.FC = () => {
   const { isDark, colors } = useAppTheme();
@@ -34,7 +35,7 @@ export const MainNavigator: React.FC = () => {
   };
 
   return (
-    <NavigationContainer theme={navigationTheme}>
+    <NavigationContainer theme={navigationTheme} linking={linking}>
       <BottomTabNavigator />
     </NavigationContainer>
   );
