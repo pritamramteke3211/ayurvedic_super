@@ -233,3 +233,114 @@ export const CheckCircleIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A
   </Svg>
 );
 
+export const PillMedicineIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A4F' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7z"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path d="M8.5 8.5l7 7" stroke={color} strokeWidth="2" strokeLinecap="round" />
+  </Svg>
+);
+
+export const FlaskLabIcon: React.FC<IconProps> = ({ size = 20, color = '#0077B6' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M10 2v7.31L4.15 19.1A2 2 0 0 0 5.86 22h12.28a2 2 0 0 0 1.71-2.9L14 9.31V2h-4z"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path d="M8.5 2h7M7 16h10" stroke={color} strokeWidth="2" strokeLinecap="round" />
+  </Svg>
+);
+
+export const SyringeIcon: React.FC<IconProps> = ({ size = 20, color = '#F77F00' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M18 2l4 4-2 2-4-4 2-2zM17 7l-9 9M5 15l4 4M2 22l4-4M14 4l6 6"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+export const AlertCircleIcon: React.FC<IconProps> = ({ size = 20, color = '#E63946' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Circle cx="12" cy="12" r="10" stroke={color} strokeWidth="2" />
+    <Path d="M12 8v4M12 16h.01" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </Svg>
+);
+
+export const PdfFileIcon: React.FC<IconProps> = ({ size = 20, color = '#E63946' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path d="M14 2v6h6" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <Path d="M8 13h2a1 1 0 0 1 0 2H8v-4h2a1 1 0 0 1 0 2M13 11v6M16 11h2a1 1 0 0 1 0 2h-2" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+  </Svg>
+);
+
+export const ArrowLeftIcon: React.FC<IconProps> = ({ size = 22, color = '#1B4332' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path d="M19 12H5M12 19l-7-7 7-7" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </Svg>
+);
+
+export const ChevronRightIcon: React.FC<IconProps> = ({ size = 18, color = '#6B7280' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path d="M9 18l6-6-6-6" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </Svg>
+);
+
+export const ShareIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A4F' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Circle cx="18" cy="5" r="3" stroke={color} strokeWidth="2" />
+    <Circle cx="6" cy="12" r="3" stroke={color} strokeWidth="2" />
+    <Circle cx="18" cy="19" r="3" stroke={color} strokeWidth="2" />
+    <Path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" stroke={color} strokeWidth="2" strokeLinecap="round" />
+  </Svg>
+);
+
+export const UploadCloudIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A4F' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M16 16l-4-4-4 4M12 12v9M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+export const CloseIcon: React.FC<IconProps> = ({ size = 20, color = '#6B7280' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path d="M18 6L6 18M6 6l12 12" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </Svg>
+);
+
+export const ActivityPulseIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A4F' }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+    <Path
+      d="M22 12h-4l-3 9L9 3l-3 9H2"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+

@@ -10,11 +10,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { consultationReducer } from './consultationSlice';
 import { shopReducer } from './shopSlice';
+import { healthRecordsReducer } from './healthRecordsSlice';
 
 export const store = configureStore({
   reducer: {
     consultation: consultationReducer,
     shop: shopReducer,
+    healthRecords: healthRecordsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

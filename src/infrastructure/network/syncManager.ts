@@ -78,6 +78,12 @@ class SyncManager {
       case 'SYNC_CART':
         logger.info('SyncManager', `Synced offline cart state to remote server:`, action.payload);
         break;
+      case 'CREATE_HEALTH_RECORD':
+        logger.info('SyncManager', `Synced offline health record creation to remote server:`, action.payload);
+        break;
+      case 'DELETE_HEALTH_RECORD':
+        logger.info('SyncManager', `Synced offline health record deletion to remote server:`, action.payload);
+        break;
       default:
         logger.warn('SyncManager', `Unknown sync action type: ${(action as any).type}`);
     }

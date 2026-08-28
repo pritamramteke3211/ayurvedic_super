@@ -12,7 +12,7 @@ import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ConsultationNavigator } from './ConsultationNavigator';
 import { ShopNavigator } from './ShopNavigator';
-import { HealthRecordsHomeScreen } from '../../modules/healthRecords/presentation/screens/HealthRecordsHomeScreen';
+import { HealthRecordsNavigator } from './HealthRecordsNavigator';
 import { useAppTheme } from '../theme/useAppTheme';
 import {
   LeafIcon,
@@ -73,7 +73,7 @@ export const BottomTabNavigator: React.FC = () => {
       />
       <Tab.Screen
         name="HealthRecords"
-        component={HealthRecordsHomeScreen}
+        component={HealthRecordsNavigator}
         options={{
           tabBarLabel: 'Records',
           tabBarIcon: ({ color, size }) => (
