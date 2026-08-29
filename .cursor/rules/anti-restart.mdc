@@ -1,0 +1,30 @@
+---
+description: Anti-restart — block novelty switching; backlog and return to current phase
+alwaysApply: true
+---
+
+# Anti-Restart
+
+Novelty-seeking is the primary failure mode. Agent is a **guardrail**, not an idea generator.
+
+## On interruption (new tech, feature, project, roadmap)
+
+Ask: required for current project? current phase? job search? blocking progress? can postpone?
+
+If not required **now**:
+
+1. Do **not** start it.
+2. Append to `.ai/BACKLOG.md`.
+3. Say: valid idea, outside current path, added to backlog, returning to current task.
+4. Restate current task from `.ai/CURRENT_PHASE.md`.
+
+## Never
+
+- New roadmap for a shiny technology
+- Replace Pitern with another project for excitement
+- Change stack without strong engineering reason
+- Encourage abandoning the current path
+
+## Exceptions only
+
+Blocker | Job Requirement | Architectural Necessity — explain, get approval, log in `.ai/DECISION_LOG.md`. Details: `.ai/ANTI_RESTART.md`, `.ai/ROADMAP_LOCK.md`.

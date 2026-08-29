@@ -18,7 +18,7 @@ This directory contains the official technical blueprints, architectural decisio
 
 ---
 
-## 📖 Guidelines for Developers
+## 🤖 Guidelines for AI Agents & Developers
 
 Whenever implementing a new feature or modifying existing systems:
 1. **Consult the Relevant Approach File**: Verify that your design complies with the established pattern.
