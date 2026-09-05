@@ -1,5 +1,21 @@
+/**
+ * @file src/core/domain/consultation/Booking.ts
+ * @description Pure Domain Entity representing a Doctor Consultation appointment booking.
+ *
+ * Invariants:
+ * - Essential identifiers (id, doctorId, slotId, patientName) must be non-empty strings.
+ * - startTime and endTime must be valid ISO date strings, with startTime strictly prior to endTime.
+ * - State transitions are guarded; terminal states (CANCELLED, COMPLETED) reject further transitions.
+ * - toJSON() provides an immutable snapshot via Object.freeze.
+ */
+
 import { BookingStatus } from './BookingStatus';
-import { ConsultationDomainError } from './ConsultationErrors';
+import {
+  ConsultationAlreadyPastError,
+  InvalidBookingDataError,
+  InvalidBookingStateTransitionError,
+  InvalidStringError,
+} from './ConsultationErrors';
 
 export { BookingStatus };
 
@@ -27,6 +43,8 @@ export class Booking {
   private readonly _createdAt: string;
 
   constructor(props: BookingProps) {
+    this.validateInvariants(props);
+
     this._id = props.id;
     this._doctorId = props.doctorId;
     this._doctorName = props.doctorName;
@@ -36,6 +54,49 @@ export class Booking {
     this._patientName = props.patientName;
     this._status = props.status;
     this._createdAt = props.createdAt;
+  }
+
+  private validateInvariants(props: BookingProps): void {
+    if (!props) {
+      throw new InvalidBookingDataError('Booking properties must be provided.');
+    }
+
+    const bookingId = props.id?.trim() || 'UNKNOWN';
+
+    if (!props.id || props.id.trim().length === 0) {
+      throw new InvalidStringError('Booking', bookingId, 'id');
+    }
+    if (!props.doctorId || props.doctorId.trim().length === 0) {
+      throw new InvalidStringError('Booking', bookingId, 'doctorId');
+    }
+    if (!props.doctorName || props.doctorName.trim().length === 0) {
+      throw new InvalidStringError('Booking', bookingId, 'doctorName');
+    }
+    if (!props.slotId || props.slotId.trim().length === 0) {
+      throw new InvalidStringError('Booking', bookingId, 'slotId');
+    }
+    if (!props.patientName || props.patientName.trim().length === 0) {
+      throw new InvalidStringError('Booking', bookingId, 'patientName');
+    }
+    if (!props.createdAt || props.createdAt.trim().length === 0) {
+      throw new InvalidStringError('Booking', bookingId, 'createdAt');
+    }
+
+    const createdTimestamp = new Date(props.createdAt).getTime();
+    if (Number.isNaN(createdTimestamp)) {
+      throw new InvalidBookingDataError('Booking createdAt must be a valid date string.');
+    }
+
+    const startTimestamp = new Date(props.startTime).getTime();
+    const endTimestamp = new Date(props.endTime).getTime();
+
+    if (Number.isNaN(startTimestamp) || Number.isNaN(endTimestamp)) {
+      throw new InvalidBookingDataError('Booking startTime and endTime must be valid date strings.');
+    }
+
+    if (startTimestamp >= endTimestamp) {
+      throw new InvalidBookingDataError('Booking startTime must be strictly earlier than endTime.');
+    }
   }
 
   get id(): string { return this._id; }
@@ -48,34 +109,116 @@ export class Booking {
   get status(): BookingStatus { return this._status; }
   get createdAt(): string { return this._createdAt; }
 
+  /**
+   * Evaluates if the consultation's scheduled slot has concluded relative to a reference timestamp.
+   */
+  isPast(referenceDate: Date = new Date()): boolean {
+    return new Date(this._endTime).getTime() < referenceDate.getTime();
+  }
+
   // -------------------------------------------------------------
   // Lifecycle State Transitions with Domain Invariant Guards
   // -------------------------------------------------------------
 
-  cancel(): void {
+  cancel(now?: Date): void {
+    if (now && this.isPast(now)) {
+      throw new ConsultationAlreadyPastError('Cannot cancel a consultation that has already concluded.');
+    }
     if (this._status === BookingStatus.COMPLETED) {
-      throw new ConsultationDomainError('Cannot cancel a consultation that has already been completed.');
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.CANCELLED,
+        'Cannot cancel a consultation that has already been completed.'
+      );
+    }
+    if (this._status === BookingStatus.CANCELLED) {
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.CANCELLED,
+        'Cannot cancel an already cancelled consultation.'
+      );
     }
     this._status = BookingStatus.CANCELLED;
   }
 
   confirm(): void {
     if (this._status === BookingStatus.CANCELLED) {
-      throw new ConsultationDomainError('Cannot confirm a cancelled booking.');
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.CONFIRMED,
+        'Cannot confirm a cancelled booking.'
+      );
+    }
+    if (this._status === BookingStatus.COMPLETED) {
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.CONFIRMED,
+        'Cannot confirm a completed booking.'
+      );
+    }
+    if (this._status === BookingStatus.CONFIRMED) {
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.CONFIRMED,
+        'Consultation is already confirmed.'
+      );
     }
     this._status = BookingStatus.CONFIRMED;
   }
 
   markPendingSync(): void {
     if (this._status === BookingStatus.CANCELLED) {
-      throw new ConsultationDomainError('Cannot queue a cancelled booking for sync.');
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.PENDING_SYNC,
+        'Cannot queue a cancelled booking for sync.'
+      );
+    }
+    if (this._status === BookingStatus.CONFIRMED) {
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.PENDING_SYNC,
+        'Cannot queue a confirmed booking for sync.'
+      );
+    }
+    if (this._status === BookingStatus.COMPLETED) {
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.PENDING_SYNC,
+        'Cannot queue a completed booking for sync.'
+      );
+    }
+    if (this._status === BookingStatus.PENDING_SYNC) {
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.PENDING_SYNC,
+        'Booking is already queued for sync.'
+      );
     }
     this._status = BookingStatus.PENDING_SYNC;
   }
 
   complete(): void {
     if (this._status === BookingStatus.CANCELLED) {
-      throw new ConsultationDomainError('Cannot complete a cancelled consultation.');
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.COMPLETED,
+        'Cannot complete a cancelled consultation.'
+      );
+    }
+    if (this._status === BookingStatus.COMPLETED) {
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.COMPLETED,
+        'Consultation has already been completed.'
+      );
+    }
+    if (this._status !== BookingStatus.CONFIRMED) {
+      throw new InvalidBookingStateTransitionError(
+        this._status,
+        BookingStatus.COMPLETED,
+        'Only confirmed consultations can be completed.'
+      );
     }
     this._status = BookingStatus.COMPLETED;
   }

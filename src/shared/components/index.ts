@@ -11,3 +11,4 @@ export * from './EmptyState';
 export * from './ErrorView';
 export * from './ErrorBoundary';
 export * from './Toast';
+export * from './FeatureStatusPlaceholder';

@@ -38,6 +38,12 @@ import {
   X,
   Activity,
   Globe,
+  Wrench,
+  Hourglass,
+  Lock,
+  BookOpen,
+  Layers,
+  Compass,
 } from 'lucide-react-native';
 
 export interface IconProps {
@@ -163,4 +169,28 @@ export const ActivityPulseIcon: React.FC<IconProps> = ({ size = 20, color = '#2D
 
 export const GlobeIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A4F' }) => (
   <Globe size={size} color={color} />
+);
+
+export const WrenchMaintenanceIcon: React.FC<IconProps> = ({ size = 20, color = '#F77F00' }) => (
+  <Wrench size={size} color={color} />
+);
+
+export const HourglassComingSoonIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A4F' }) => (
+  <Hourglass size={size} color={color} />
+);
+
+export const LockRestrictedIcon: React.FC<IconProps> = ({ size = 20, color = '#E63946' }) => (
+  <Lock size={size} color={color} />
+);
+
+export const BookOpenStudyIcon: React.FC<IconProps> = ({ size = 20, color = '#1B4332' }) => (
+  <BookOpen size={size} color={color} />
+);
+
+export const LayersIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A4F' }) => (
+  <Layers size={size} color={color} />
+);
+
+export const CompassIcon: React.FC<IconProps> = ({ size = 20, color = '#2D6A4F' }) => (
+  <Compass size={size} color={color} />
 );
